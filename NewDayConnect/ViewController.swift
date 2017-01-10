@@ -12,7 +12,27 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        YouTubeClient.sharedInstance().getVideos { (success, result, error) in
+            if success {
+                print("success")
+            } else {
+                print("error with getVideos Request: \(error)")
+            }
+        }
+        
+//        YouTubeClient.sharedInstance().getPlaylistID { (success, result, error) in
+//            if success {
+//                if let ID = result {
+//                    print("playlist ID is \(ID)")
+//                } else {
+//                    print("result from getPlaylistID is empty")
+//                }
+//                
+//            } else {
+//                print("error getting playlist ID: \(error)")
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {
