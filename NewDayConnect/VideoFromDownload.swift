@@ -1,17 +1,17 @@
 //
-//  Video.swift
+//  VideoFromDownload.swift
 //  NewDayConnect
 //
-//  Created by Joel on 1/9/17.
+//  Created by Joel on 1/10/17.
 //  Copyright © 2017 Joel Pratt. All rights reserved.
 //
 
 import Foundation
 
-struct Video {
-    let title : String
+struct VideoFromDownload {
+    let title: String
     let thumbnail: String
-    let VideoID: String
+    let videoID: String
     
     init(dictionary: [String: AnyObject]) {
         if let vidTitle = dictionary[YouTubeClient.ResponseKeys.Title] as? String {
@@ -29,21 +29,21 @@ struct Video {
         }
         
         if let resource = dictionary[YouTubeClient.ResponseKeys.ResourceID] as? [String: AnyObject], let vidID = resource[YouTubeClient.ResponseKeys.VideoID] as? String {
-            VideoID = vidID
+            videoID = vidID
         } else {
-            VideoID = ""
+            videoID = ""
             print("video ID not found from snippet dictionary")
         }
     }
     
-   static func getVideosFromResults(results: [[String: AnyObject]]) -> [Video] {
+    static func getVideosFromResults(results: [[String: AnyObject]]) -> [VideoFromDownload] {
         
-        var videos = [Video]()
+        var videos = [VideoFromDownload]()
         
         for result in results {
             
             if let snippet = result[YouTubeClient.ResponseKeys.Snippet] as? [String: AnyObject] {
-                videos.append(Video(dictionary: snippet))
+                videos.append(VideoFromDownload(dictionary: snippet))
             } else {
                 print("Snippet dictionary could not be found from result dictionary")
             }
@@ -51,4 +51,5 @@ struct Video {
         
         return videos
     }
+
 }

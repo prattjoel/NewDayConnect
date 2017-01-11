@@ -10,7 +10,7 @@ import Foundation
 
 extension YouTubeClient {
     
-    func getVideos(completionHandlerForGetVdeos: @escaping (Bool, [Video]?, NSError?) -> Void) {
+    func getVideos(completionHandlerForGetVdeos: @escaping (Bool, [VideoFromDownload]?, NSError?) -> Void) {
         var playlistID = ""
         
         getPlaylistID { (success, result, error) in
@@ -30,7 +30,7 @@ extension YouTubeClient {
         }
     }
     
-    func getVideosFromPlaylist(playlistID: String, completionHandlerForGetVideosFromPlaylist: @escaping (Bool, [Video]?, NSError?) -> Void) -> Void {
+    func getVideosFromPlaylist(playlistID: String, completionHandlerForGetVideosFromPlaylist: @escaping (Bool, [VideoFromDownload]?, NSError?) -> Void) -> Void {
 
         
         let paramaters: [String: String] = [
@@ -62,7 +62,7 @@ extension YouTubeClient {
 //                return
 //            }
             
-           let videos = Video.getVideosFromResults(results: itemsArray)
+           let videos = VideoFromDownload.getVideosFromResults(results: itemsArray)
             
             print(" videos from getVideosFromPlaylist: \(videos)")
             
