@@ -94,5 +94,6 @@ extension CoreDataStack {
         }
     }
     
+    static let sharedInstance = CoreDataStack(modelName: "Model")
 }
 
