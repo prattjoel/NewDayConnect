@@ -17,7 +17,7 @@ class AllVideosController: UITableViewController {
     var videos = [VideoFromDownload]()
     var videoID: String!
     var video: VideoFromDownload!
-    var stack = CoreDataStack(modelName: "Model")
+//    var stack = CoreDataStack(modelName: "Model")
     var videoToSave: Video!
     var favoriteVideos = [Video]()
     var tableViewDatasource = AllVideosDataSource()
@@ -49,6 +49,12 @@ class AllVideosController: UITableViewController {
                 print("error with getVideos Request: \(error)")
             }
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
+        controller.video = tableViewDatasource.videos[indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
