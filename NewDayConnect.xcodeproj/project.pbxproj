@@ -15,6 +15,7 @@
 		5D2273BE1E25678B002196DF /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D2273BC1E25678B002196DF /* Model.xcdatamodeld */; };
 		5D2273C11E2567D2002196DF /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2273BF1E2567D2002196DF /* Video.swift */; };
 		5D2273C21E2567D2002196DF /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2273C01E2567D2002196DF /* Video+CoreDataProperties.swift */; };
+		5D625E351E29763700155D68 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D625E341E29763700155D68 /* Reachability.swift */; };
 		5D80BCA71E25CCE6009E0633 /* AllVideosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D80BCA61E25CCE6009E0633 /* AllVideosDataSource.swift */; };
 		5D80BCA91E25D38A009E0633 /* FavoritesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D80BCA81E25D38A009E0633 /* FavoritesDatasource.swift */; };
 		5D90156E1E28657C00AA495D /* PresentAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D90156D1E28657C00AA495D /* PresentAlertController.swift */; };
@@ -59,6 +60,7 @@
 		5D2273BD1E25678B002196DF /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		5D2273BF1E2567D2002196DF /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = ../Video.swift; sourceTree = "<group>"; };
 		5D2273C01E2567D2002196DF /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Video+CoreDataProperties.swift"; path = "../Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5D625E341E29763700155D68 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		5D80BCA61E25CCE6009E0633 /* AllVideosDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllVideosDataSource.swift; sourceTree = "<group>"; };
 		5D80BCA81E25D38A009E0633 /* FavoritesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesDatasource.swift; sourceTree = "<group>"; };
 		5D90156D1E28657C00AA495D /* PresentAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAlertController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				5DCBC0F41E2588760042A555 /* VideoFromDownload.swift */,
 				5D80BCA61E25CCE6009E0633 /* AllVideosDataSource.swift */,
 				5D80BCA81E25D38A009E0633 /* FavoritesDatasource.swift */,
+				5D625E341E29763700155D68 /* Reachability.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				5DA0CAFC1E255D9B00FB2F20 /* CoreDataStack.swift in Sources */,
 				5DCBC0F91E258D5B0042A555 /* AllVideosController.swift in Sources */,
 				5DAF605E1E0F3A4E003BF5B5 /* AppDelegate.swift in Sources */,
+				5D625E351E29763700155D68 /* Reachability.swift in Sources */,
 				5D1E82411E20110E00577F8C /* YouTubeConstants.swift in Sources */,
 				5DCBC0F71E258D490042A555 /* FavoritesController.swift in Sources */,
 				5DCBC0F51E2588760042A555 /* VideoFromDownload.swift in Sources */,
