@@ -13,6 +13,7 @@ class AllVideosController: UITableViewController {
     
     @IBOutlet weak var allVideosTableView: UITableView!
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var videos = [VideoFromDownload]()
     var videoID: String!
@@ -24,6 +25,9 @@ class AllVideosController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        indicator.startAnimating()
+        indicator.hidesWhenStopped = true
         
         allVideosTableView.dataSource = tableViewDatasource
         allVideosTableView.delegate = self
@@ -38,6 +42,7 @@ class AllVideosController: UITableViewController {
                     DispatchQueue.main.async {
                         self.tableViewDatasource.videos = videosArray
                         self.allVideosTableView.reloadData()
+                        self.indicator.stopAnimating()
                     }
                     
                 } else {
@@ -57,9 +62,10 @@ class AllVideosController: UITableViewController {
         controller.video = tableViewDatasource.videos[indexPath.row]
         controller.videoID = tableViewDatasource.videos[indexPath.row].videoID
         controller.videoToSave = nil
+        //controller.indicator.startAnimating()
         self.navigationController?.pushViewController(controller, animated: true)
     }
-//    
+//
 //    func presentAlertContoller(title: String, message: String) {
 //        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: .alert)
 //        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)

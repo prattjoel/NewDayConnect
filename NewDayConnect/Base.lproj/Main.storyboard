@@ -59,6 +59,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="5ie-5X-2mG">
+                            <rect key="frame" x="0.0" y="136" width="375" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AllVideosCell" textLabel="BTn-1Z-sXP" style="IBUITableViewCellStyleDefault" id="rVu-0Q-eHF">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -86,6 +90,7 @@
                     <navigationItem key="navigationItem" title="All Videos" id="V9c-uk-jRs"/>
                     <connections>
                         <outlet property="allVideosTableView" destination="er5-pc-MMT" id="9pb-6r-m4y"/>
+                        <outlet property="indicator" destination="5ie-5X-2mG" id="SP8-e8-zVz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TVH-gX-8cY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,35 +144,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyX-zS-8MZ">
-                                <rect key="frame" x="164" y="516" width="46" height="30"/>
+                                <rect key="frame" x="0.0" y="516" width="375" height="30"/>
+                                <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <action selector="addToFavorites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b6U-rF-UyB"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXq-1u-Zgf" customClass="YTPlayerView">
-                                <rect key="frame" x="16" y="237" width="343" height="192"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="250"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="faq-Mb-duu">
+                                <rect key="frame" x="177" y="436" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="DyX-zS-8MZ" secondAttribute="trailing" constant="149" id="3iO-dh-AQe"/>
-                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="M6n-vK-I04"/>
+                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="top" secondItem="faq-Mb-duu" secondAttribute="bottom" constant="60" id="1E9-ia-dEH"/>
+                            <constraint firstAttribute="trailing" secondItem="GXq-1u-Zgf" secondAttribute="trailing" id="Kbs-yA-sMI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DyX-zS-8MZ" secondAttribute="bottom" constant="121" id="R6M-nv-JQa"/>
-                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RZq-C0-hRR"/>
-                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="217" id="Tro-XT-czh"/>
-                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="148" id="wt3-5n-QQ1"/>
-                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="top" secondItem="GXq-1u-Zgf" secondAttribute="bottom" constant="87" id="yfv-im-DS7"/>
+                            <constraint firstItem="faq-Mb-duu" firstAttribute="top" secondItem="GXq-1u-Zgf" secondAttribute="bottom" constant="158" id="RcE-vl-KTM"/>
+                            <constraint firstAttribute="trailing" secondItem="DyX-zS-8MZ" secondAttribute="trailing" id="Rce-Ia-wKT"/>
+                            <constraint firstItem="faq-Mb-duu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="161" id="Uoy-1x-EuM"/>
+                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YPQ-1e-8Ua"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="faq-Mb-duu" secondAttribute="trailing" constant="162" id="Ytj-Gj-bZF"/>
+                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="fu8-yu-hth"/>
+                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hHt-4C-yQx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="favoritesButton" destination="DyX-zS-8MZ" id="bSe-8t-J8O"/>
+                        <outlet property="indicator" destination="faq-Mb-duu" id="2LE-Kf-VTU"/>
                         <outlet property="playerView" destination="GXq-1u-Zgf" id="ig6-PG-3vX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4849" y="10"/>
+            <point key="canvasLocation" x="4848.8000000000002" y="9.4452773613193415"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tE0-en-qqP">

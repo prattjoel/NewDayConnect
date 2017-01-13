@@ -10,10 +10,12 @@ import Foundation
 import UIKit
 import CoreData
 
-class VideoPlayerController: UIViewController {
+class VideoPlayerController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var favoritesButton: UIButton!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+
     
     var videos = [VideoFromDownload]()
     var videoID: String?
@@ -30,6 +32,8 @@ class VideoPlayerController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        indicator.startAnimating()
+        
         guard let stack = CoreDataStack.sharedInstance else {
             print("Stack not found")
             return
@@ -44,6 +48,10 @@ class VideoPlayerController: UIViewController {
         if let vidID = videoID {
             
             playerView.load(withVideoId: vidID)
+            playerView.webView!.delegate = self
+            
+            indicator.hidesWhenStopped = true
+           // indicator.stopAnimating()
             
             let vidFromContext = checkDuplicateVideo(context: stack.context, vidID: vidID)
             
@@ -57,6 +65,10 @@ class VideoPlayerController: UIViewController {
             
         }
         
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+         indicator.stopAnimating()
     }
     
 //    override func viewDidLoad() {
@@ -168,10 +180,10 @@ class VideoPlayerController: UIViewController {
     func isFavorited(isInFavs: Bool){
         
         if isInFavs {
-            favoritesButton.setTitle("Del", for: .normal)
+            favoritesButton.setTitle("Delete From Favorites", for: .normal)
             
         } else {
-            favoritesButton.setTitle("Fav", for: .normal)
+            favoritesButton.setTitle("Add to favorites", for: .normal)
             
         }
     }
