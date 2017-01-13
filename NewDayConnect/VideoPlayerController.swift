@@ -10,12 +10,11 @@ import Foundation
 import UIKit
 import CoreData
 
-class VideoPlayerController: UIViewController, UIWebViewDelegate {
+class VideoPlayerController: UIViewController, UIWebViewDelegate, YTPlayerViewDelegate {
     
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
-    
     
     var videoID: String?
     var video: VideoFromDownload?
@@ -25,13 +24,14 @@ class VideoPlayerController: UIViewController, UIWebViewDelegate {
     var thumbString: String?
     var idString: String?
     
-    
     //MARK: - View Lifecycle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         indicator.startAnimating()
+        indicator.hidesWhenStopped = true
+
         
         guard let stack = CoreDataStack.sharedInstance else {
             print("Stack not found")
@@ -46,10 +46,8 @@ class VideoPlayerController: UIViewController, UIWebViewDelegate {
         
         if let vidID = videoID {
             
+            playerView.delegate = self
             playerView.load(withVideoId: vidID)
-            playerView.webView!.delegate = self
-            
-            indicator.hidesWhenStopped = true
             
             let vidFromContext = checkDuplicateVideo(context: stack.context, vidID: vidID)
             
@@ -96,10 +94,16 @@ class VideoPlayerController: UIViewController, UIWebViewDelegate {
         }
     }
     
+    //MARK: - PlayerView Delegate Methods
     
-    //MARK: - WebView Delegate Method
-    func webViewDidFinishLoad(_ webView: UIWebView) {
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         indicator.stopAnimating()
+        playerView.playVideo()
+    }
+    
+    func playerView(_ playerView: YTPlayerView, receivedError error: YTPlayerError) {
+        print(" error from ytPlayer\(error)")
+        presentAlertContoller(title: "Video Not Found", message: "Please try another video")
     }
     
     //MARK: - Coredata helper functions
@@ -150,5 +154,4 @@ class VideoPlayerController: UIViewController, UIWebViewDelegate {
             
         }
     }
-    
 }
