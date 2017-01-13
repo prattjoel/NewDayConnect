@@ -26,6 +26,8 @@ extension YouTubeClient {
         static let Part = "part"
         static let Username = "forUsername"
         static let PlaylistID = "playlistId"
+        static let NumberOfVedeos = "maxResults"
+        
     }
     
     struct ParamaterValues {
@@ -33,6 +35,7 @@ extension YouTubeClient {
         static let Details = "contentDetails"
         static let Snippet = "snippet"
         static let Username = "newdaybronx"
+        static let NumberOfVideos = 50
 
     }
     

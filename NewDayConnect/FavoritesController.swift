@@ -22,9 +22,8 @@ class FavoritesController: UITableViewController {
     var favoriteVideos = [Video]()
     var tableViewDatasource = FavoritesDatasource()
 
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         favoritesTableView.dataSource = tableViewDatasource
         favoritesTableView.delegate = self
@@ -35,11 +34,33 @@ class FavoritesController: UITableViewController {
             return
         }
         
+        if videosInContext.count == 0 {
+            presentAlertContoller(title: "No Favorites Found", message: "Select a video in the all videos tab to add it your favorites")
+        }
+        
         print("number of videos in context: \(videosInContext.count)")
         
         tableViewDatasource.videos = videosInContext
         favoritesTableView.reloadData()
+        
     }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        favoritesTableView.dataSource = tableViewDatasource
+//        favoritesTableView.delegate = self
+//        
+//        let context = CoreDataStack.sharedInstance?.context
+//        guard let videosInContext = try! videosFromContext(context: context) else {
+//            print("No videos in context")
+//            return
+//        }
+//        
+//        print("number of videos in context: \(videosInContext.count)")
+//        
+//        tableViewDatasource.videos = videosInContext
+//        favoritesTableView.reloadData()
+//    }
     
     func videosFromContext(context: NSManagedObjectContext?) throws -> [Video]? {
         
@@ -66,6 +87,8 @@ class FavoritesController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
         controller.videoToSave = tableViewDatasource.videos[indexPath.row]
+        controller.videoID = tableViewDatasource.videos[indexPath.row].videoID
+        controller.video = nil
         self.navigationController?.pushViewController(controller, animated: true)
     }
 }

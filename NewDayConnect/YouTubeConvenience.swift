@@ -26,6 +26,7 @@ extension YouTubeClient {
 
             } else {
                 print("error getting playlistID: \(error)")
+                completionHandlerForGetVdeos(false, nil, NSError(domain: "getVideos", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not get videos from playlist ID"]))
             }
         }
     }
@@ -33,10 +34,11 @@ extension YouTubeClient {
     func getVideosFromPlaylist(playlistID: String, completionHandlerForGetVideosFromPlaylist: @escaping (Bool, [VideoFromDownload]?, NSError?) -> Void) -> Void {
 
         
-        let paramaters: [String: String] = [
+        let paramaters: [String: Any] = [
             ParamaterKeys.ApiKey: ParamaterValues.ApiKey,
             ParamaterKeys.Part: ParamaterValues.Snippet,
-            ParamaterKeys.PlaylistID: "\(playlistID)"
+            ParamaterKeys.PlaylistID: "\(playlistID)",
+            ParamaterKeys.NumberOfVedeos: ParamaterValues.NumberOfVideos
         ]
         
         taskForGetMethod(method: Constants.PlaylistMethod, parameters: paramaters as [String : AnyObject]) { result, error in
@@ -50,7 +52,7 @@ extension YouTubeClient {
                 return
             }
             
-            print("result from getVideosFromPlaylist: \n \(results) \n")
+           // print("result from getVideosFromPlaylist: \n \(results) \n")
             
             guard let itemsArray = results[ResponseKeys.Items] as? [[String: AnyObject]] else {
                 completionHandlerForGetVideosFromPlaylist(false, nil, NSError(domain: "getVideosFromPlaylist", code: 1, userInfo: [NSLocalizedDescriptionKey: "No items from result from getVideosFromPlaylist"]))
@@ -64,7 +66,7 @@ extension YouTubeClient {
             
            let videos = VideoFromDownload.getVideosFromResults(results: itemsArray)
             
-            print(" videos from getVideosFromPlaylist: \(videos)")
+           // print(" videos from getVideosFromPlaylist: \(videos)")
             
             completionHandlerForGetVideosFromPlaylist(true, videos, nil)
             
