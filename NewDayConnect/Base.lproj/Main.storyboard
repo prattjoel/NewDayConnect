@@ -97,11 +97,11 @@
             </objects>
             <point key="canvasLocation" x="3649" y="591"/>
         </scene>
-        <!--Item-->
+        <!--All Videos-->
         <scene sceneID="9iY-GG-o2b">
             <objects>
                 <navigationController id="LQu-Hh-NlE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="671-C1-fOO"/>
+                    <tabBarItem key="tabBarItem" title="All Videos" id="671-C1-fOO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bD2-FP-GjJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -114,11 +114,11 @@
             </objects>
             <point key="canvasLocation" x="2609" y="591"/>
         </scene>
-        <!--Item-->
+        <!--Favorites-->
         <scene sceneID="6n7-zm-TGb">
             <objects>
                 <navigationController id="42D-yE-Bpi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="2aL-Jc-h8W"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" id="2aL-Jc-h8W"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1cC-0a-U6o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -13,6 +13,8 @@ class FavoritesDatasource: NSObject, UITableViewDataSource {
     
     var videos = [Video]()
     
+    //MARK: - TableView DataSource Methods
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
     }
