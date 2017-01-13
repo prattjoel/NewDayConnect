@@ -13,6 +13,8 @@ class AllVideosDataSource: NSObject, UITableViewDataSource {
     
     var videos = [VideoFromDownload]()
     
+    //MARK: - TableView DataSource Methods
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videos.count
     }

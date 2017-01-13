@@ -14,14 +14,10 @@ class FavoritesController: UITableViewController {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    var videos = [VideoFromDownload]()
-    var videoID: String!
-    var video: VideoFromDownload!
-//    var stack = CoreDataStack(modelName: "Model")
-    var videoToSave: Video!
-    var favoriteVideos = [Video]()
     var tableViewDatasource = FavoritesDatasource()
-
+    
+    //MARK: - View Lifecycle
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -30,37 +26,20 @@ class FavoritesController: UITableViewController {
         
         let context = CoreDataStack.sharedInstance?.context
         guard let videosInContext = try! videosFromContext(context: context) else {
-            print("No videos in context")
+            print("Unable to retrieve videos from context")
             return
         }
         
         if videosInContext.count == 0 {
-            presentAlertContoller(title: "No Favorites Found", message: "Select a video in the all videos tab to add it your favorites")
+            presentAlertContoller(title: "No Favorites Found", message: "Select a video in the all videos tab to add it to your favorites")
         }
-        
-        print("number of videos in context: \(videosInContext.count)")
         
         tableViewDatasource.videos = videosInContext
         favoritesTableView.reloadData()
         
     }
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        
-//        favoritesTableView.dataSource = tableViewDatasource
-//        favoritesTableView.delegate = self
-//        
-//        let context = CoreDataStack.sharedInstance?.context
-//        guard let videosInContext = try! videosFromContext(context: context) else {
-//            print("No videos in context")
-//            return
-//        }
-//        
-//        print("number of videos in context: \(videosInContext.count)")
-//        
-//        tableViewDatasource.videos = videosInContext
-//        favoritesTableView.reloadData()
-//    }
+    
+    //MARK: - Retrieve videos from context
     
     func videosFromContext(context: NSManagedObjectContext?) throws -> [Video]? {
         
@@ -83,6 +62,8 @@ class FavoritesController: UITableViewController {
         
         return vids
     }
+    
+    //MARK: - TableView Delegate Method
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController

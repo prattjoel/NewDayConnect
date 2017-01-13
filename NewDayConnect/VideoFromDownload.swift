@@ -13,6 +13,8 @@ struct VideoFromDownload {
     let thumbnail: String
     let videoID: String
     
+    
+    //Mark: - Initialize VideoFromDownload
     init(dictionary: [String: AnyObject]) {
         if let vidTitle = dictionary[YouTubeClient.ResponseKeys.Title] as? String {
             title = vidTitle
@@ -36,6 +38,7 @@ struct VideoFromDownload {
         }
     }
     
+    // Get dictionary from array of dictionaries to use in initialization
     static func getVideosFromResults(results: [[String: AnyObject]]) -> [VideoFromDownload] {
         
         var videos = [VideoFromDownload]()
@@ -51,5 +54,5 @@ struct VideoFromDownload {
         
         return videos
     }
-
+    
 }
