@@ -56,6 +56,6 @@ class AllVideosController: UITableViewController {
         controller.video = tableViewDatasource.videos[indexPath.row]
         controller.videoID = tableViewDatasource.videos[indexPath.row].videoID
         controller.videoToSave = nil
-        self.navigationController?.pushViewController(controller, animated: true)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -20,7 +20,6 @@
 		5D90156E1E28657C00AA495D /* PresentAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D90156D1E28657C00AA495D /* PresentAlertController.swift */; };
 		5DA0CAFC1E255D9B00FB2F20 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0CAFB1E255D9B00FB2F20 /* CoreDataStack.swift */; };
 		5DAF605E1E0F3A4E003BF5B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF605D1E0F3A4E003BF5B5 /* AppDelegate.swift */; };
-		5DAF60601E0F3A4F003BF5B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF605F1E0F3A4F003BF5B5 /* ViewController.swift */; };
 		5DAF60631E0F3A4F003BF5B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF60611E0F3A4F003BF5B5 /* Main.storyboard */; };
 		5DAF60651E0F3A4F003BF5B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF60641E0F3A4F003BF5B5 /* Assets.xcassets */; };
 		5DAF60681E0F3A4F003BF5B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5DAF60661E0F3A4F003BF5B5 /* LaunchScreen.storyboard */; };
@@ -66,7 +65,6 @@
 		5DA0CAFB1E255D9B00FB2F20 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5DAF605A1E0F3A4E003BF5B5 /* NewDayConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewDayConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DAF605D1E0F3A4E003BF5B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5DAF605F1E0F3A4F003BF5B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5DAF60621E0F3A4F003BF5B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5DAF60641E0F3A4F003BF5B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5DAF60671E0F3A4F003BF5B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 				5D090D141E2543A400ACBCDB /* Controller */,
 				5D090D0F1E25427600ACBCDB /* Assets.bundle */,
 				5DAF605D1E0F3A4E003BF5B5 /* AppDelegate.swift */,
-				5DAF605F1E0F3A4F003BF5B5 /* ViewController.swift */,
 				5DAF60611E0F3A4F003BF5B5 /* Main.storyboard */,
 				5DAF60641E0F3A4F003BF5B5 /* Assets.xcassets */,
 				5DAF60661E0F3A4F003BF5B5 /* LaunchScreen.storyboard */,
@@ -354,7 +351,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D80BCA71E25CCE6009E0633 /* AllVideosDataSource.swift in Sources */,
-				5DAF60601E0F3A4F003BF5B5 /* ViewController.swift in Sources */,
 				5D80BCA91E25D38A009E0633 /* FavoritesDatasource.swift in Sources */,
 				5D1E823F1E2010DB00577F8C /* YouTubeClient.swift in Sources */,
 				5DA0CAFC1E255D9B00FB2F20 /* CoreDataStack.swift in Sources */,

@@ -70,6 +70,6 @@ class FavoritesController: UITableViewController {
         controller.videoToSave = tableViewDatasource.videos[indexPath.row]
         controller.videoID = tableViewDatasource.videos[indexPath.row].videoID
         controller.video = nil
-        self.navigationController?.pushViewController(controller, animated: true)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
