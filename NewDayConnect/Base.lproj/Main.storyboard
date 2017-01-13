@@ -138,30 +138,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXq-1u-Zgf" customClass="YTPlayerView">
-                                <rect key="frame" x="16" y="28" width="343" height="192"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DyX-zS-8MZ">
-                                <rect key="frame" x="164" y="318" width="46" height="30"/>
-                                <state key="normal" title="Fav"/>
+                                <rect key="frame" x="164" y="516" width="46" height="30"/>
                                 <connections>
                                     <action selector="addToFavorites:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b6U-rF-UyB"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXq-1u-Zgf" customClass="YTPlayerView">
+                                <rect key="frame" x="16" y="237" width="343" height="192"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="DyX-zS-8MZ" secondAttribute="trailing" constant="149" id="CJJ-cB-zpu"/>
-                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="GS7-5i-dzH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GXq-1u-Zgf" secondAttribute="bottom" constant="447" id="J8s-aq-DI6"/>
-                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="top" secondItem="GXq-1u-Zgf" secondAttribute="bottom" constant="98" id="M5G-vd-VrM"/>
-                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="148" id="RN0-dI-Ig4"/>
-                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dqO-VJ-MYV"/>
-                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="nCZ-U2-sOy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DyX-zS-8MZ" secondAttribute="trailing" constant="149" id="3iO-dh-AQe"/>
+                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="M6n-vK-I04"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DyX-zS-8MZ" secondAttribute="bottom" constant="121" id="R6M-nv-JQa"/>
+                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="RZq-C0-hRR"/>
+                            <constraint firstItem="GXq-1u-Zgf" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="217" id="Tro-XT-czh"/>
+                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="148" id="wt3-5n-QQ1"/>
+                            <constraint firstItem="DyX-zS-8MZ" firstAttribute="top" secondItem="GXq-1u-Zgf" secondAttribute="bottom" constant="87" id="yfv-im-DS7"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="favoritesButton" destination="DyX-zS-8MZ" id="bSe-8t-J8O"/>
                         <outlet property="playerView" destination="GXq-1u-Zgf" id="ig6-PG-3vX"/>
                     </connections>
                 </viewController>

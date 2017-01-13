@@ -42,11 +42,12 @@ class AllVideosController: UITableViewController {
                     
                 } else {
                     print("could not get videos from results")
-                    
-                    
                 }
             } else {
-                print("error with getVideos Request: \(error)")
+                print("\n error with getVideos Request: \(error) \n")
+                
+                self.presentAlertContoller(title: "Videos Not Found" , message: "There was a problem getting the videos.  Try again later")
+                
             }
         }
     }
@@ -54,8 +55,19 @@ class AllVideosController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "VideoPlayerController") as! VideoPlayerController
         controller.video = tableViewDatasource.videos[indexPath.row]
+        controller.videoID = tableViewDatasource.videos[indexPath.row].videoID
+        controller.videoToSave = nil
         self.navigationController?.pushViewController(controller, animated: true)
     }
+//    
+//    func presentAlertContoller(title: String, message: String) {
+//        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        
+//        alertContoller.addAction(okAction)
+//        
+//        present(alertContoller, animated: true, completion: nil)
+//    }
 }
 
 

@@ -13,86 +13,146 @@ import CoreData
 class VideoPlayerController: UIViewController {
     
     @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     var videos = [VideoFromDownload]()
-    var videoID: String!
-    var video: VideoFromDownload!
-    //    var stack = CoreDataStack(modelName: "Model")
+    var videoID: String?
+    var video: VideoFromDownload?
     var videoToSave: Video?
     var favoriteVideos = [Video]()
+    var vidInFavorites: Bool!
+    var titleString: String?
+    var thumbString: String?
+    var idString: String?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        if let vid = videoToSave {
-            playerView.load(withVideoId: vid.videoID)
-        } else {
-            playerView.load(withVideoId: video.videoID)
+        guard let stack = CoreDataStack.sharedInstance else {
+            print("Stack not found")
+            return
         }
         
-        //        guard let videosInContext = try! videosFromContext(context: stack?.context) else {
-        //            print("No videos in context")
-        //            return
-        //        }
-        //
-        //        if videosInContext.count > 0 {
-        //            playerView.load(withVideoId: videosInContext[0].videoID)
-        //        } else {
-        //
-        //            YouTubeClient.sharedInstance().getVideos { (success, result, error) in
-        //                if success {
-        //
-        //                    print("success")
-        //
-        //                    if let videosArray = result {
-        //
-        //                        self.videos = videosArray
-        //
-        //                        self.video = self.videos[0]
-        //
-        //                        self.videoID = self.video.videoID
-        //
-        //                        DispatchQueue.main.async {
-        //                            self.playerView.load(withVideoId: self.videoID)
-        //                        }
-        //                    } else {
-        //                        print("could not get videos from results")
-        //
-        //
-        //                    }
-        //                } else {
-        //                    print("error with getVideos Request: \(error)")
-        //                }
-        //            }
-        //        }
-    }
-    @IBAction func addToFavorites(_ sender: Any) {
-        let context = CoreDataStack.sharedInstance?.context
-        videoToSave = Video(inContext: context!, title: video.title, thumbnail: video.thumbnail, videoID: video.videoID)
-        favoriteVideos.append(videoToSave!)
-        saveContext()
+        if let vid = videoToSave {
+            titleString = vid.title
+            thumbString = vid.thumbnail
+            idString = vid.videoID
+        }
+        
+        if let vidID = videoID {
+            
+            playerView.load(withVideoId: vidID)
+            
+            let vidFromContext = checkDuplicateVideo(context: stack.context, vidID: vidID)
+            
+            if vidFromContext == nil {
+                vidInFavorites = false
+                isFavorited(isInFavs: vidInFavorites)
+            } else {
+                vidInFavorites = true
+                isFavorited(isInFavs: vidInFavorites)
+            }
+            
+        }
+        
     }
     
-    func videosFromContext(context: NSManagedObjectContext?) throws -> [Video]? {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        guard let stack = CoreDataStack.sharedInstance else {
+//            print("Stack not found")
+//            return
+//        }
+//        
+//        if let vidID = videoID {
+//            
+//            playerView.load(withVideoId: vidID)
+//            
+//            let vidFromContext = checkDuplicateVideo(context: stack.context, vidID: vidID)
+//            
+//            if vidFromContext == nil {
+//                vidInFavorites = false
+//                isFavorited(isInFavs: vidInFavorites)
+//            } else {
+//                vidInFavorites = true
+//                isFavorited(isInFavs: vidInFavorites)
+//            }
+//            
+//        }
+//        
+//        
+//    }
+    
+    @IBAction func addToFavorites(_ sender: Any) {
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Video")
+        guard let stack = CoreDataStack.sharedInstance else {
+            print("Stack not found")
+            return
+        }
         
-        var videosFromContext: [Video]?
-        var fetchError: Error?
+        print("vidInFavorites is: \(vidInFavorites)")
         
-        context?.performAndWait {
-            do {
-                videosFromContext = try context?.fetch(fetchRequest) as! [Video]?
-            } catch let error {
-                fetchError = error
+        if vidInFavorites == true {
+            print("videoToSave ID before deleted: \(videoToSave?.videoID)")
+            stack.context.delete(videoToSave!)
+            saveContext()
+            vidInFavorites = false
+            isFavorited(isInFavs: vidInFavorites)
+            print("video deleted from context")
+            print("videoToSave ID after deleted: \(videoToSave?.videoID)")
+
+            
+        } else {
+            if let vid = video {
+                let vidForContext = Video(inContext: stack.context, title: vid.title, thumbnail: vid.thumbnail, videoID: vid.videoID)
+                addToContext(videoForContext: vidForContext)
+                videoToSave = vidForContext
+            } else {
+                if let title = titleString, let thumb = thumbString, let id = idString {
+                    
+                    //print("videID of video to be saved is: \(vidFromFavs.videoID)")
+                    let videoForContext = Video(inContext: stack.context, title: title, thumbnail: thumb, videoID: id)
+                    videoToSave = videoForContext
+                    print("saved video is: \(videoForContext)")
+                    addToContext(videoForContext: videoForContext)
+                } else {
+                    print("no video to add when favorites button pressed")
+                }
             }
         }
         
-        guard let vids = videosFromContext else {
-            throw fetchError!
+        print("vidInFavorites after calls in favButton is: \(vidInFavorites)")
+
+        
+        
+    }
+    
+    func checkDuplicateVideo(context: NSManagedObjectContext, vidID: String) -> Video? {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Video")
+        
+        let predicate = NSPredicate(format: "videoID == %@", argumentArray: [vidID])
+        
+        fetchRequest.predicate = predicate
+        
+        
+        var videosFromContext: [Video]!
+        
+        context.performAndWait {
+            videosFromContext = try! context.fetch(fetchRequest) as! [Video]
+            
         }
         
-        return vids
+        if videosFromContext.count > 0 {
+            return videosFromContext.first
+        } else {
+            return nil
+        }
+        
+        
     }
     
     func saveContext() {
@@ -105,4 +165,24 @@ class VideoPlayerController: UIViewController {
         }
     }
     
+    func isFavorited(isInFavs: Bool){
+        
+        if isInFavs {
+            favoritesButton.setTitle("Del", for: .normal)
+            
+        } else {
+            favoritesButton.setTitle("Fav", for: .normal)
+            
+        }
+    }
+    
+    func addToContext(videoForContext: Video) {
+        
+        favoriteVideos.append(videoForContext)
+        saveContext()
+        vidInFavorites = true
+        isFavorited(isInFavs: vidInFavorites)
+        print("video added to context")
+        
+    }
 }

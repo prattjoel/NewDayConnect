@@ -17,6 +17,7 @@
 		5D2273C21E2567D2002196DF /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2273C01E2567D2002196DF /* Video+CoreDataProperties.swift */; };
 		5D80BCA71E25CCE6009E0633 /* AllVideosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D80BCA61E25CCE6009E0633 /* AllVideosDataSource.swift */; };
 		5D80BCA91E25D38A009E0633 /* FavoritesDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D80BCA81E25D38A009E0633 /* FavoritesDatasource.swift */; };
+		5D90156E1E28657C00AA495D /* PresentAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D90156D1E28657C00AA495D /* PresentAlertController.swift */; };
 		5DA0CAFC1E255D9B00FB2F20 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA0CAFB1E255D9B00FB2F20 /* CoreDataStack.swift */; };
 		5DAF605E1E0F3A4E003BF5B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF605D1E0F3A4E003BF5B5 /* AppDelegate.swift */; };
 		5DAF60601E0F3A4F003BF5B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DAF605F1E0F3A4F003BF5B5 /* ViewController.swift */; };
@@ -61,6 +62,7 @@
 		5D2273C01E2567D2002196DF /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Video+CoreDataProperties.swift"; path = "../Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5D80BCA61E25CCE6009E0633 /* AllVideosDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllVideosDataSource.swift; sourceTree = "<group>"; };
 		5D80BCA81E25D38A009E0633 /* FavoritesDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesDatasource.swift; sourceTree = "<group>"; };
+		5D90156D1E28657C00AA495D /* PresentAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAlertController.swift; sourceTree = "<group>"; };
 		5DA0CAFB1E255D9B00FB2F20 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		5DAF605A1E0F3A4E003BF5B5 /* NewDayConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewDayConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DAF605D1E0F3A4E003BF5B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				5D090D121E25439E00ACBCDB /* VideoPlayerController.swift */,
 				5DCBC0F61E258D490042A555 /* FavoritesController.swift */,
 				5DCBC0F81E258D5B0042A555 /* AllVideosController.swift */,
+				5D90156D1E28657C00AA495D /* PresentAlertController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				5DCBC0F51E2588760042A555 /* VideoFromDownload.swift in Sources */,
 				5D2273C11E2567D2002196DF /* Video.swift in Sources */,
 				5D2273C21E2567D2002196DF /* Video+CoreDataProperties.swift in Sources */,
+				5D90156E1E28657C00AA495D /* PresentAlertController.swift in Sources */,
 				5D2273BE1E25678B002196DF /* Model.xcdatamodeld in Sources */,
 				5DC9073B1E23FEDF0076D43B /* YouTubeConvenience.swift in Sources */,
 				5D090D131E25439E00ACBCDB /* VideoPlayerController.swift in Sources */,
