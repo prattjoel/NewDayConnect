@@ -23,6 +23,7 @@ class VideoPlayerController: UIViewController, UIWebViewDelegate, YTPlayerViewDe
     var titleString: String?
     var thumbString: String?
     var idString: String?
+    let reachability = Reachability()
     
     //MARK: - View Lifecycle
     
@@ -32,6 +33,7 @@ class VideoPlayerController: UIViewController, UIWebViewDelegate, YTPlayerViewDe
         indicator.startAnimating()
         indicator.hidesWhenStopped = true
 
+        checkReachability()
         
         guard let stack = CoreDataStack.sharedInstance else {
             print("Stack not found")
@@ -153,5 +155,38 @@ class VideoPlayerController: UIViewController, UIWebViewDelegate, YTPlayerViewDe
             favoritesButton.setTitle("Add to favorites", for: .normal)
             
         }
+    }
+    
+    func checkReachability(){
+        
+        if let reach = reachability {
+            reach.whenUnreachable = { reachability in
+                
+                DispatchQueue.main.async {
+                    print("no connection")
+                    self.indicator.stopAnimating()
+                    self.presentAlertContoller(title: "No Internet", message: "There's no internet connection.  Please check your connection and try again")
+                }
+                
+                reach.stopNotifier()
+            }
+            
+            do {
+                try reach.startNotifier()
+            } catch {
+                print("could not start reachability notifier")
+            }
+        }
+    }
+    
+    override func presentAlertContoller(title: String, message: String) {
+        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+        
+            self.navigationController!.popViewController(animated: true)
+        }
+        
+        alertContoller.addAction(okAction)
+        present(alertContoller, animated: true, completion: nil)
     }
 }
