@@ -15,17 +15,17 @@ class AllVideosController: UITableViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     var tableViewDatasource = AllVideosDataSource()
-    var refresh = UIRefreshControl()
+    var refreshPull = UIRefreshControl()
     let reachability = Reachability()
-
+    
     //MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refresh.attributedTitle = NSAttributedString(string: "Pull to Refresh")
-        refresh.addTarget(self, action: #selector(refreshPage), for: UIControlEvents.valueChanged)
-        allVideosTableView.addSubview(refresh)
+        refreshPull.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refreshPull.addTarget(self, action: #selector(refreshPage(sender:)), for: UIControlEvents.valueChanged)
+        allVideosTableView.refreshControl = refreshPull
         
         indicator.startAnimating()
         indicator.hidesWhenStopped = true
@@ -34,11 +34,12 @@ class AllVideosController: UITableViewController {
         allVideosTableView.delegate = self
         
         checkReachability()
-        loadVideos()
+        loadVideos(completion: nil)
     }
     
     //MARK: - Methods for getting videos
-    func loadVideos() {
+    func loadVideos(completion: (()->Void)?) {
+        
         YouTubeClient.sharedInstance().getVideos { (success, result, error) in
             if success {
                 
@@ -55,20 +56,25 @@ class AllVideosController: UITableViewController {
             } else {
                 print("\n error with getVideos Request: \(error) \n")
                 
-                self.presentAlertContoller(title: "Videos Not Found" , message: "There was a problem getting the videos.  Please try again later")
-                
                 DispatchQueue.main.async {
                     self.indicator.stopAnimating()
+                    self.presentAlertContoller(title: "Videos Not Found" , message: "There was a problem getting the videos.  Please try again later")
                 }
-                
             }
+            
         }
+        completion?()
     }
     
-    func refreshPage(){
-        loadVideos()
-        if refresh.isRefreshing {
-            refresh.endRefreshing()
+    func refreshPage(sender: UIRefreshControl){
+        
+        loadVideos {
+            
+            self.delay(time: 1.0, completion: {
+                if self.refreshPull.isRefreshing {
+                    self.refreshPull.endRefreshing()
+                }
+            })
         }
     }
     
@@ -94,6 +100,16 @@ class AllVideosController: UITableViewController {
         }
     }
     
+    override func presentAlertContoller(title: String, message: String) {
+        let alertContoller = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+        }
+        
+        alertContoller.addAction(okAction)
+        present(alertContoller, animated: true, completion: nil)
+    }
+    
+    
     //MARK: - TableView Delegate Method
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -103,4 +119,9 @@ class AllVideosController: UITableViewController {
         controller.videoToSave = nil
         navigationController?.pushViewController(controller, animated: true)
     }
+    
+    func delay(time: Double, completion: @escaping ()-> Void) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time, execute: completion)
+    }
+    
 }
