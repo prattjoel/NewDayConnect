@@ -97,6 +97,38 @@
             </objects>
             <point key="canvasLocation" x="3649" y="591"/>
         </scene>
+        <!--Donation-->
+        <scene sceneID="RlV-CA-CVf">
+            <objects>
+                <viewController id="7o0-fi-Vrr" customClass="DonationViewController" customModule="NewDayConnect" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cos-fS-UaZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="D8i-JF-CYZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CdH-4I-35D">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOi-Uz-6X5">
+                                <rect key="frame" x="191.66666666666666" y="353" width="31" height="30"/>
+                                <state key="normal" title="Give"/>
+                                <connections>
+                                    <action selector="donate:" destination="7o0-fi-Vrr" eventType="touchUpInside" id="2k1-hM-YcP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WOi-Uz-6X5" firstAttribute="centerX" secondItem="CdH-4I-35D" secondAttribute="centerX" id="BjM-wL-zPV"/>
+                            <constraint firstItem="WOi-Uz-6X5" firstAttribute="centerY" secondItem="CdH-4I-35D" secondAttribute="centerY" id="hVO-wp-5mg"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Donation" id="r2s-5n-QH3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFt-RA-tJX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="-1548"/>
+        </scene>
         <!--All Videos-->
         <scene sceneID="9iY-GG-o2b">
             <objects>
@@ -197,6 +229,7 @@
                     <connections>
                         <segue destination="42D-yE-Bpi" kind="relationship" relationship="viewControllers" id="pDN-uh-c76"/>
                         <segue destination="LQu-Hh-NlE" kind="relationship" relationship="viewControllers" id="wOS-d9-uvS"/>
+                        <segue destination="7o0-fi-Vrr" kind="relationship" relationship="viewControllers" id="p39-Fy-eLy"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DcG-H2-mux" userLabel="First Responder" sceneMemberID="firstResponder"/>

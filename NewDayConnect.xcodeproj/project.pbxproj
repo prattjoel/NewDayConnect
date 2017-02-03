@@ -30,6 +30,7 @@
 		5DCBC0F51E2588760042A555 /* VideoFromDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBC0F41E2588760042A555 /* VideoFromDownload.swift */; };
 		5DCBC0F71E258D490042A555 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBC0F61E258D490042A555 /* FavoritesController.swift */; };
 		5DCBC0F91E258D5B0042A555 /* AllVideosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCBC0F81E258D5B0042A555 /* AllVideosController.swift */; };
+		5DFA0A171E43D8AB00FE07B2 /* DonationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFA0A161E43D8AB00FE07B2 /* DonationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		5DCBC0F41E2588760042A555 /* VideoFromDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoFromDownload.swift; sourceTree = "<group>"; };
 		5DCBC0F61E258D490042A555 /* FavoritesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		5DCBC0F81E258D5B0042A555 /* AllVideosController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllVideosController.swift; sourceTree = "<group>"; };
+		5DFA0A161E43D8AB00FE07B2 /* DonationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DonationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				5DCBC0F61E258D490042A555 /* FavoritesController.swift */,
 				5DCBC0F81E258D5B0042A555 /* AllVideosController.swift */,
 				5D90156D1E28657C00AA495D /* PresentAlertController.swift */,
+				5DFA0A161E43D8AB00FE07B2 /* DonationViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -353,6 +356,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DFA0A171E43D8AB00FE07B2 /* DonationViewController.swift in Sources */,
 				5D80BCA71E25CCE6009E0633 /* AllVideosDataSource.swift in Sources */,
 				5D80BCA91E25D38A009E0633 /* FavoritesDatasource.swift in Sources */,
 				5D1E823F1E2010DB00577F8C /* YouTubeClient.swift in Sources */,
